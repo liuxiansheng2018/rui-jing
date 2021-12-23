@@ -42,8 +42,8 @@ export default {
 }
 
 .el-main {
-  background-color: #e9eef3;
-  color: var(--el-text-color-primary);
+  background-color: #cfe7ff;
+  /* color: var(--el-text-color-primary); */
   /* text-align: center; */
   /* line-height: 160px; */
 }
@@ -51,6 +51,9 @@ export default {
 .el-container {
   height: 720px;
   width: 100%;
+  /* min-height: 720px; */
+  height: 100%;
+  min-height: 660px;
 }
 
 /* .el-container:nth-child(5) .el-aside,

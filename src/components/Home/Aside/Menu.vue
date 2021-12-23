@@ -1,37 +1,39 @@
 <template>
-  <div></div>
-  <el-row class="tac">
-    <el-col :span="12">
-      <el-menu
-        background-color="#545c64"
-        class="el-menu-vertical-demo"
-        default-active="2"
-        text-color="#fff"
-        @open="handleOpen"
-        @close="handleClose"
-        router="true"
-        :unique-opened="true"
-      >
-        <el-sub-menu v-for="item in list" :key="item.id" :index="item.id">
-          <template #title>
-            <el-icon><location /></el-icon>
-            <span>{{ item.name }}</span>
-          </template>
-          <el-menu-item-group>
-            <el-menu-item
-              v-for="value in item.child"
-              :index="value.childUrl"
-              :key="value.childName"
-              >{{ value.childName }}</el-menu-item
-            >
-          </el-menu-item-group>
-        </el-sub-menu>
-      </el-menu>
-    </el-col>
-  </el-row>
+  <div>
+    <el-row class="tac">
+      <el-col :span="12">
+        <el-menu
+          background-color="#545c64"
+          class="el-menu-vertical-demo"
+          default-active="1"
+          text-color="#fff"
+          @open="handleOpen"
+          @close="handleClose"
+          router="true"
+          :unique-opened="true"
+        >
+          <el-sub-menu v-for="item in list" :key="item.id" :index="item.id">
+            <template #title>
+              <el-icon><location /></el-icon>
+              <span>{{ item.name }}</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item
+                v-for="value in item.child"
+                :index="value.childUrl"
+                :key="value.childName"
+                >{{ value.childName }}</el-menu-item
+              >
+            </el-menu-item-group>
+          </el-sub-menu>
+        </el-menu>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script lang="js">
+
 import { defineComponent } from "vue";
 import {
   Location,
