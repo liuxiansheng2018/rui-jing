@@ -62,7 +62,7 @@ export default defineComponent({
               },
             ],
             url:"/Index/Main"
-            
+
         },
         {
             id:2,
@@ -206,5 +206,8 @@ export default defineComponent({
 .el-sub-menu__title {
   height: 0;
   line-height: 40px;
+}
+.el-menu {
+  width: 200px;
 }
 </style>
