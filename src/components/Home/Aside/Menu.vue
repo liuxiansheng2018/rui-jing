@@ -1,9 +1,10 @@
 <template>
+  <div></div>
   <el-row class="tac">
     <el-col :span="12">
-      <h5>Custom colors</h5>
+      <!-- <h5>Custom colors</h5> -->
+
       <el-menu
-        active-text-color="#ffd04b"
         background-color="#545c64"
         class="el-menu-vertical-demo"
         default-active="2"
@@ -11,6 +12,7 @@
         @open="handleOpen"
         @close="handleClose"
         router="true"
+        :unique-opened="true"
       >
         <!-- <el-sub-menu index="1">
           <template #title>
@@ -88,7 +90,7 @@
             <el-menu-item index="1-3">消息公告</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu> -->
-        <el-sub-menu v-for="item in list" :key="item.id" index="item.url">
+        <el-sub-menu v-for="item in list" :key="item.id" :index="item.id">
           <template #title>
             <el-icon><location /></el-icon>
             <span>{{ item.name }}</span>
@@ -119,6 +121,7 @@ import {
 export default defineComponent({
   data(){
     return{
+
       list:[
         {
             id:1,
@@ -138,7 +141,7 @@ export default defineComponent({
               },
             ],
             url:"/Index/Main"
-            
+
         },
         {
             id:2,
@@ -270,6 +273,16 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+.el-menu {
+  width: 200px;
+}
+
+// /deep/ .el-aside::-webkit-scrollbar {
+//   display: none !important;
+//   width: 0 !important;
+//   height: 0;
+// }
+
 .el-col-12 {
   max-width: 100%;
 }
