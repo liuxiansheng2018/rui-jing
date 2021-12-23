@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h3>金锐管理系统</h3>
+    <h1>金锐管理系统</h1>
     <div class="right">
       <p></p>
       <p></p>
@@ -20,6 +20,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+h1 {
+  color: white;
+  font-size: 20px;
+}
 .header {
   display: flex;
   justify-content: space-between;

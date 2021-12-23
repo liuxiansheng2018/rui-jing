@@ -61,18 +61,6 @@ const routes = [
         component:()=> import("../components/Shop/index.vue"),
       },
       {
-        path:"/Index/Shop/ShopType",
-        component:()=> import("../components/Shop/ShopType.vue"),
-      },
-      {
-        path:"/Index/Shop/Purchase",
-        component:()=> import("../components/Shop/Purchase.vue"),
-      },
-      {
-        path:"/Index/Shop/Stock",
-        component:()=> import("../components/Shop/Stock.vue"),
-      },
-      {
         path:"/Index/Staff",
         component:()=> import("../components/Staff/index.vue"),
       },

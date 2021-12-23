@@ -1,9 +1,8 @@
 <template>
+  <div></div>
   <el-row class="tac">
     <el-col :span="12">
-      <h5>Custom colors</h5>
       <el-menu
-        active-text-color="#ffd04b"
         background-color="#545c64"
         class="el-menu-vertical-demo"
         default-active="2"
@@ -11,6 +10,7 @@
         @open="handleOpen()"
         @close="handleClose"
         router="true"
+        :unique-opened="true"
       >
         <el-sub-menu v-for="item in list" :key="item.id" :index="item.id">
           <template #title>
@@ -43,6 +43,7 @@ import {
 export default defineComponent({
   data(){
     return{
+
       list:[
         {
             id:1,
@@ -87,16 +88,16 @@ export default defineComponent({
             name:"商品管理",
             child:[
               {
-                childName:"商品种类",
-                childUrl:"/Index/Shop/ShopType"
+                childName:"订单预约",
+                childUrl:""
               },
               {
-                childName:"商品采购",
-                childUrl:"/Index/Shop/Purchase"
+                childName:"订单打印",
+                childUrl:""
               },
               {
-                childName:"库存",
-                childUrl:"/Index/Shop/Stock"
+                childName:"订单详情",
+                childUrl:""
               },
             ],
             url:"/Index/Main"
@@ -194,6 +195,16 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+.el-menu {
+  width: 200px;
+}
+
+// /deep/ .el-aside::-webkit-scrollbar {
+//   display: none !important;
+//   width: 0 !important;
+//   height: 0;
+// }
+
 .el-col-12 {
   max-width: 100%;
 }
