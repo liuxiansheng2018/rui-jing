@@ -24,7 +24,6 @@ export default {
 };
 </script>
 
-
 <style>
 .el-header,
 .el-footer {
@@ -39,6 +38,7 @@ export default {
   color: var(--el-text-color-primary);
   text-align: center;
   line-height: 200px;
+  overflow-x: hidden;
 }
 
 .el-main {
@@ -53,12 +53,12 @@ export default {
   width: 100%;
 }
 
-.el-container:nth-child(5) .el-aside,
+/* .el-container:nth-child(5) .el-aside,
 .el-container:nth-child(6) .el-aside {
   line-height: 260px;
 }
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
-}
+} */
 </style>
