@@ -87,17 +87,17 @@ export default defineComponent({
             id:3,
             name:"商品管理",
             child:[
-              {
-                childName:"订单预约",
-                childUrl:""
+               {
+                childName:"商品种类",
+                childUrl:"/Index/Shop/ShopType"
               },
               {
-                childName:"订单打印",
-                childUrl:""
+                childName:"商品采购",
+                childUrl:"/Index/Shop/Purchase"
               },
               {
-                childName:"订单详情",
-                childUrl:""
+                childName:"库存",
+                childUrl:"/Index/Shop/Stock"
               },
             ],
             url:"/Index/Main"
