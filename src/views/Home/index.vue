@@ -24,7 +24,6 @@ export default {
 };
 </script>
 
-
 <style>
 .el-header,
 .el-footer {
@@ -39,6 +38,7 @@ export default {
   color: var(--el-text-color-primary);
   text-align: center;
   line-height: 200px;
+  overflow: hidden;
 }
 
 .el-main {

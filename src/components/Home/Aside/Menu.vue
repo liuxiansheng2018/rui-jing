@@ -8,11 +8,11 @@
         class="el-menu-vertical-demo"
         default-active="2"
         text-color="#fff"
-        @open="handleOpen"
+        @open="handleOpen()"
         @close="handleClose"
         router="true"
       >
-        <el-sub-menu v-for="item in list" :key="item.id" index="item.url">
+        <el-sub-menu v-for="item in list" :key="item.id" :index="item.id">
           <template #title>
             <el-icon><location /></el-icon>
             <span>{{ item.name }}</span>
@@ -57,7 +57,7 @@ export default defineComponent({
                 childUrl:""
               },
               {
-                childName:"客户数据",
+                childName:"消息公告",
                 childUrl:""
               },
             ],
