@@ -1,7 +1,10 @@
 <template>
   <el-row class="tac">
     <el-col :span="12">
-      <h5>Custom colors</h5>
+      <h5>
+        <div>touxiang</div>
+        <p>张伟</p>
+      </h5>
       <el-menu
         active-text-color="#ffd04b"
         background-color="#545c64"
@@ -11,8 +14,9 @@
         @open="handleOpen"
         @close="handleClose"
         router="true"
+        unique-opened="true"
       >
-        <el-sub-menu v-for="item in list" :key="item.id" index="item.url">
+        <el-sub-menu v-for="item in list" :key="item.id" :index="item.id">
           <template #title>
             <el-icon><location /></el-icon>
             <span>{{ item.name }}</span>
@@ -194,17 +198,26 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.el-col-12 {
-  max-width: 100%;
-}
+// deep .el-col-12 {
+//   max-width: 100%;
+//   width: 200px;
+// }
 // .el-row {
 //   justify-content: center;
 // }
+.el-menu {
+  width: 200px;
+}
 .el-menu-item-group__title {
   padding: 0, 0, 0, 0;
 }
 .el-sub-menu__title {
   height: 0;
   line-height: 40px;
+}
+/deep/ .el-aside::-webkit-scrollbar {
+  display: none;
+  width: 0 !important;
+  height: 0;
 }
 </style>
