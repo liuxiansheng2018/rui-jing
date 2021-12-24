@@ -1,5 +1,4 @@
 <template>
-  <div></div>
   <el-row class="tac">
     <el-col :span="12">
       <!-- <h5>Custom colors</h5> -->

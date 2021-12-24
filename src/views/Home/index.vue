@@ -24,10 +24,8 @@ export default {
 };
 </script>
 
-
 <style>
-.el-header,
-.el-footer {
+.el-header {
   background-color: #b3c0d1;
   color: var(--el-text-color-primary);
   text-align: center;
@@ -39,11 +37,13 @@ export default {
   color: var(--el-text-color-primary);
   text-align: center;
   line-height: 200px;
+  overflow-x: hidden;
 }
 
 .el-main {
   background-color: #e9eef3;
   color: var(--el-text-color-primary);
+  height: 100%;
   /* text-align: center; */
   /* line-height: 160px; */
 }
@@ -51,14 +51,15 @@ export default {
 .el-container {
   height: 720px;
   width: 100%;
+  height: 100%;
 }
 
-.el-container:nth-child(5) .el-aside,
+/* .el-container:nth-child(5) .el-aside,
 .el-container:nth-child(6) .el-aside {
   line-height: 260px;
 }
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
-}
+} */
 </style>
