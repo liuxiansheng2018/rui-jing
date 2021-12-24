@@ -70,7 +70,7 @@ export default {
 <style lang="less" scoped>
 .grid-content {
   border-radius: 10px;
-  min-height: 80px;
+  min-height: 100px;
   text-align: left;
   padding: 10px;
   color: #333;
@@ -87,39 +87,43 @@ export default {
     font-weight: bold;
   }
   .searchbox {
-    width: 300px;
-    height: 30px;
+    width: 400px;
+    height: 40px;
     border: 2px solid rgb(52, 145, 252);
-    border-radius: 15px;
+    border-radius: 20px;
     position: absolute;
     top: 50%;
     left: 100px;
     transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     img {
       width: 15px;
       height: 15px;
-      margin: 5px 5px;
+      margin-left: 5px;
     }
     input {
-      height: 26px;
+      height: 36px;
       outline: none;
-      position: absolute;
-      top: 0;
-      width: 213px;
-      margin-left: 5px;
+      // position: absolute;
+      // top: 0;
+      // width: 213px;
+      flex: 1;
+      margin-left: 10px;
       border: none;
     }
     input::placeholder {
       color: #999;
     }
     .searchbtn {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 26px;
+      // position: absolute;
+      // right: 0;
+      // top: 0;
+      height: 36px;
       width: 60px;
       border-left: 2px solid rgb(52, 145, 252);
-      line-height: 26px;
+      line-height: 36px;
       text-align: center;
       color: #999;
       cursor: pointer;
@@ -130,7 +134,7 @@ export default {
 .shoptype {
   .grid-content {
     margin-top: 20px;
-    min-height: 420px;
+    min-height: 520px;
   }
   .typeline {
     height: 120px;

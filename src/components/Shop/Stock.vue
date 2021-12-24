@@ -101,7 +101,7 @@ export default {
 <style lang="less" scoped>
 .grid-content {
   border-radius: 10px;
-  min-height: 80px;
+  min-height: 100px;
 }
 .bg-purple-dark {
   background: #fff;
@@ -109,7 +109,7 @@ export default {
 .shoptype {
   .grid-content {
     margin-top: 20px;
-    min-height: 420px;
+    min-height: 500px;
   }
 }
 .search {
@@ -124,26 +124,31 @@ export default {
     color: #555;
   }
   .box {
+    height: 60px;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     .searchbox {
       width: 350px;
-      height: 30px;
+      height: 40px;
       border: 2px solid rgb(52, 145, 252);
-      border-radius: 15px;
+      border-radius: 20px;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
       img {
         width: 15px;
         height: 15px;
-        margin: 5px 5px;
+        margin-left: 5px;
       }
       input {
-        height: 26px;
+        height: 36px;
         outline: none;
         // position: absolute;
         // top: 0;
-        width: 263px;
+        // width: 263px;
+        flex: 1;
         margin-left: 5px;
         border: none;
       }
@@ -154,10 +159,10 @@ export default {
         // position: absolute;
         // right: 0;
         // top: 0;
-        height: 26px;
+        height: 36px;
         width: 60px;
         border-left: 2px solid rgb(52, 145, 252);
-        line-height: 26px;
+        line-height: 36px;
         text-align: center;
         color: #999;
         cursor: pointer;
@@ -173,12 +178,12 @@ export default {
       }
       .time-btn {
         width: 150px;
-        height: 30px;
+        height: 40px;
         border: 2px solid #1187ff;
         border-radius: 20px;
         input {
           width: 120px;
-          height: 25px;
+          height: 35px;
           margin-left: 14px;
           outline: none;
           border: none;

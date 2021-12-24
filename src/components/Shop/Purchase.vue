@@ -126,13 +126,13 @@ export default {
 }
 .search {
   .grid-content {
-    min-height: 80px;
+    min-height: 100px;
     margin-top: 10px;
   }
 }
 .shoptype {
   .grid-content {
-    min-height: 280px;
+    min-height: 380px;
     margin-top: 10px;
   }
 }
@@ -202,25 +202,28 @@ export default {
   }
   .searchbox {
     width: 350px;
-    height: 30px;
+    height: 40px;
     border: 2px solid rgb(52, 145, 252);
-    border-radius: 15px;
+    border-radius: 20px;
     position: absolute;
     top: 50%;
     left: 100px;
     transform: translateY(-50%);
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     img {
       width: 15px;
       height: 15px;
-      margin: 5px 5px;
+      margin-left: 5px;
     }
     input {
-      height: 26px;
+      height: 36px;
       outline: none;
       // position: absolute;
       // top: 0;
-      width: 263px;
+      // width: 263px;
+      flex: 1;
       margin-left: 5px;
       border: none;
     }
@@ -231,10 +234,10 @@ export default {
       // position: absolute;
       // right: 0;
       // top: 0;
-      height: 26px;
+      height: 36px;
       width: 60px;
       border-left: 2px solid rgb(52, 145, 252);
-      line-height: 26px;
+      line-height: 36px;
       text-align: center;
       color: #999;
       cursor: pointer;

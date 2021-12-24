@@ -59,7 +59,7 @@ export default defineComponent({
                 childName:"当日订单",
                 childUrl:"/Index/Main"
               },
-              
+
             ],
             url:"/Index/Main"
 
@@ -144,13 +144,13 @@ export default defineComponent({
                 childName:"考勤",
                 childUrl:"/Index/Staff/Check"
               },
-              
+
             ],
             url:"/Index/Staff/WorkReport"
         },{
             id:7,
             name:"设置",
-            
+
             url:"/Index/setUp"
         },
       ]
