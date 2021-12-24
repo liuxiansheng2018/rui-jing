@@ -51,7 +51,9 @@ export default {
 .el-container {
   height: 720px;
   width: 100%;
+  /* min-height: 720px; */
   height: 100%;
+  min-height: 660px;
 }
 
 /* .el-container:nth-child(5) .el-aside,
