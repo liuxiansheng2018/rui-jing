@@ -24,7 +24,10 @@
                 </div>
               </span>
             </div>
-            <div class="leave-2"></div>
+            <div class="leave-2">
+              <label for="">请假事:</label>
+              <textarea cols="3" rows="">内容</textarea>
+            </div>
             <button type="submit">申请</button>
           </form>
         </div></el-col
@@ -33,8 +36,30 @@
 
     <el-row :gutter="20">
       <el-col :span="24"
-        ><div class="grid-content bg-purple grid-height"></div
-      ></el-col>
+        ><div class="grid-content bg-purple grid-height">
+          <h4>请假记录</h4>
+          <div class="record">
+            <table border="1">
+              <tr>
+                <td>姓名</td>
+                <td>请假事由</td>
+                <td>请假时间</td>
+                <td>审批</td>
+                <td>销假</td>
+                <td>申请时间</td>
+              </tr>
+              <tr v-for="(item, index) in 4" :key="index">
+                <td>张伟</td>
+                <td>处理个人事务</td>
+                <td>2021.12.9-2021.12.10</td>
+                <td>已审批</td>
+                <td>代销毁</td>
+                <td>2021.12.08</td>
+              </tr>
+            </table>
+          </div>
+        </div></el-col
+      >
     </el-row>
   </div>
 </template>
@@ -111,12 +136,48 @@ form {
     justify-content: space-between;
     align-items: center;
     padding: 0 50px;
+    font-size: 14px;
     .leaveTime {
       display: flex;
+      margin-right: 50px;
     }
     span {
       align-items: center;
+      label {
+        margin: 0 20px;
+      }
     }
+  }
+  .leave-2 {
+    font-size: 14px;
+    display: flex;
+    padding-left: 50px;
+    margin-top: 20px;
+    textarea {
+      width: 90%;
+      height: 100px;
+    }
+    label {
+      margin: 0 20px;
+    }
+  }
+  button {
+    width: 100px;
+    height: 25px;
+    background-color: #0379fd;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+}
+.record {
+  width: 100%;
+  height: 100%;
+  padding: 20px 100px 0;
+  // margin-top: 30px;
+  td {
+    padding: 15px 60px;
   }
 }
 </style>
