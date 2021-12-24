@@ -15,7 +15,11 @@
           <el-sub-menu v-for="item in list" :key="item.id" :index="item.id">
             <template #title>
               <el-icon><location /></el-icon>
-              <span>{{ item.name }}</span>
+              <span
+                ><el-menu-item :index="item.url">{{
+                  item.name
+                }}</el-menu-item></span
+              >
             </template>
             <el-menu-item-group>
               <el-menu-item
@@ -53,16 +57,9 @@ export default defineComponent({
             child:[
               {
                 childName:"当日订单",
-                childUrl:""
+                childUrl:"/Index/Main"
               },
-              {
-                childName:"客户数据",
-                childUrl:""
-              },
-              {
-                childName:"客户数据",
-                childUrl:""
-              },
+              
             ],
             url:"/Index/Main"
 
@@ -84,7 +81,7 @@ export default defineComponent({
                 childUrl:"/Index/Order/details"
               },
             ],
-            url:"/Index/Order"
+            url:"/Index/Order/Maa"
         },{
             id:3,
             name:"商品管理",
@@ -102,7 +99,7 @@ export default defineComponent({
                 childUrl:"/Index/Shop/Stock"
               },
             ],
-            url:"/Index/Main"
+            url:"/Index/Shop/ShopType"
         },{
             id:4,
             name:"个人中心",
@@ -116,7 +113,7 @@ export default defineComponent({
                 childUrl:"/Index/Personal/leave"
               },
             ],
-            url:"/Index/Personal"
+            url:"/Index/Personal/MyWord"
         },{
             id:5,
             name:"客户管理",
@@ -134,43 +131,27 @@ export default defineComponent({
                 childUrl:"/Index/Customer/CustomerMining"
               },
             ],
-            url:"/Index/Main"
+            url:"/Index/Customer/member"
         },{
             id:6,
             name:"员工管理",
             child:[
               {
-                childName:"会员中心",
-                childUrl:""
+                childName:"工作汇报",
+                childUrl:"/Index/Staff/WorkReport"
               },
               {
-                childName:"新增客户",
-                childUrl:""
+                childName:"考勤",
+                childUrl:"/Index/Staff/Check"
               },
-              {
-                childName:"客户挖掘",
-                childUrl:""
-              },
+              
             ],
-            url:"/Index/Main"
+            url:"/Index/Staff/WorkReport"
         },{
             id:7,
             name:"设置",
-            child:[
-              {
-                childName:"会员中心",
-                childUrl:""
-              },
-              {
-                childName:"新增客户",
-                childUrl:""
-              },
-              {
-                childName:"客户挖掘",
-                childUrl:""
-              },
-            ],
-            url:"/Index/Main"
+            
+            url:"/Index/setUp"
         },
       ]
     }
