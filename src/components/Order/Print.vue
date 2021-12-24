@@ -12,7 +12,7 @@
   </el-row>
   <el-row :gutter="20">
     <el-col :span="24"
-      ><div class="grid-content bg-purple" style="height: 400px">
+      ><div class="grid-content bg-purple" style="height: 500px">
         <div class="search-list">
           <div class="searchbox">
             <img src="../../assets/img/public/6.png" alt="" />
@@ -20,14 +20,38 @@
             <div class="searchbtn">点击搜索</div>
           </div>
         </div>
-      </div></el-col
-    >
+        <el-table :data="tableData" stripe style="width: 100%">
+          <el-table-column prop="num" label="订单号" :md="3" />
+          <el-table-column prop="time" label="交易时间" :md="3" />
+          <el-table-column prop="payment" label="支付方式" :md="3" />
+          <el-table-column prop="money" label="订单金额" :md="3" />
+          <el-table-column prop="discount" label="已优惠" :md="3" />
+          <el-table-column prop="paid" label="订单金额" :md="3" />
+          <el-table-column prop="put" label="发票" :md="3" />
+          <el-table-column prop="return" label="打印" :md="3" />
+        </el-table>
+        <el-pagination
+          :background="true"
+          v-model:currentPage="currentPage1"
+          :page-size="10"
+          layout="total, prev, pager, next"
+          :total="100"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          prev-text="上一页"
+          next-text="下一页"
+          style="margin-top: 20px"
+        >
+        </el-pagination></div
+    ></el-col>
   </el-row>
 </template>
 
 <script>
 import Print from "./print-left.vue";
 import Print1 from "./print-right.vue";
+import getTable from "../../mock/print/print.js";
+import { ref, onMounted } from "vue";
 
 export default {
   data() {
@@ -36,6 +60,31 @@ export default {
   components: {
     Print,
     Print1,
+  },
+  setup() {
+    const current = ref(1);
+    const pageSize = ref(6);
+    let tableData = ref([]);
+
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      tableData.value = getTable(pageSize.value, current.value);
+    };
+
+    onMounted(() => {
+      tableData.value = getTable(pageSize.value, current.value);
+    });
+    return {
+      current,
+      pageSize,
+      tableData,
+      handleSizeChange,
+      handleCurrentChange,
+    };
   },
 };
 </script>
