@@ -2,10 +2,11 @@
   <div class="header">
     <h1>金锐管理系统</h1>
     <div class="right">
-      <p></p>
-      <p></p>
+      <img src="../../../assets/img/首页/more.png" alt="" />
+      <img src="../../../assets/img/首页/set.png" alt="" />
       <div class="touxiang">
-        <img src="" alt="" />
+        <img src="../../../assets/img/setting/touxiang.png" alt="" />
+        <img src="../../../assets/img/首页/arrow.png" alt="" />
       </div>
     </div>
   </div>
@@ -29,14 +30,23 @@ h1 {
   justify-content: space-between;
   .right {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    p {
-      width: 38px;
-      height: 38px;
-      border: 1px solid #f3f3f3;
+    img {
+      width: 30px;
+      height: 30px;
       margin-right: 42px;
       align-items: center;
+    }
+    .touxiang {
+      img {
+        width: 50px;
+        height: 50px;
+      }
+      img:nth-of-type(2) {
+        width: 8px;
+        height: 8px;
+      }
     }
   }
 }
