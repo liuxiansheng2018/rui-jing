@@ -25,8 +25,7 @@ export default {
 </script>
 
 <style>
-.el-header,
-.el-footer {
+.el-header {
   background-color: #b3c0d1;
   color: var(--el-text-color-primary);
   text-align: center;
@@ -42,8 +41,9 @@ export default {
 }
 
 .el-main {
-  background-color: #cfe7ff;
-  /* color: var(--el-text-color-primary); */
+  background-color: #e9eef3;
+  color: var(--el-text-color-primary);
+  height: 100%;
   /* text-align: center; */
   /* line-height: 160px; */
 }
