@@ -22,11 +22,49 @@
     <el-col :span="24"
       ><div class="grid-content bg-purple-dark">
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="date" label="Date" width="180" />
-          <el-table-column prop="name" label="Name" width="180" />
-          <el-table-column prop="address" label="Address" />
-        </el-table></div
-    ></el-col>
+          <el-table-column prop="date">
+            <template #header>
+              <div class="header1">商品种类</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="name">
+            <template #header>
+              <div class="header2">订单号</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="address">
+            <template #header>
+              <div class="header2">入库时间</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="address">
+            <template #header>
+              <div class="header2">采购方式</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="address">
+            <template #header>
+              <div class="header2">订单金额</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="address">
+            <template #header>
+              <div class="header2">现有数量</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="address">
+            <template #header>
+              <div class="header2">存储方式</div>
+            </template>
+          </el-table-column>
+          <el-table-column prop="address">
+            <template #header>
+              <div class="header2">已付款</div>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div></el-col
+    >
   </el-row>
 </template>
 
@@ -148,5 +186,21 @@ export default {
       }
     }
   }
+}
+.header1 {
+  width: 80px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #0379fd;
+  text-align: center;
+  color: #fff;
+}
+.header2 {
+  width: 80px;
+  height: 24px;
+  border-radius: 12px;
+  background-color: #d5d5d5;
+  text-align: center;
+  color: #555;
 }
 </style>

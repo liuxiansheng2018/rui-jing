@@ -133,13 +133,13 @@ export default {
     min-height: 420px;
   }
   .typeline {
-    height: 80px;
+    height: 120px;
     display: flex;
 
     .typetitle {
-      height: 80px;
-      width: 80px;
-      line-height: 80px;
+      height: 120px;
+      width: 120px;
+      line-height: 120px;
       text-align: center;
       span {
         display: inline-block;
@@ -154,7 +154,7 @@ export default {
     display: flex;
   }
   .shop {
-    width: 150px;
+    width: 200px;
     height: 100%;
     position: relative;
     font-size: 14px;
@@ -170,16 +170,16 @@ export default {
       top: 0;
       padding: 10px 0;
       .price {
-        height: 28px;
+        height: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-bottom: 4px;
+        // margin-bottom: 4px;
       }
       .name {
-        height: 28px;
-        margin-top: 2px;
+        height: 40px;
+        margin-top: 10px;
         text-align: center;
         // display: flex;
         // flex-direction: column;
