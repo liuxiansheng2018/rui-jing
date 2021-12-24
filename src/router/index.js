@@ -73,17 +73,12 @@ const routes = [
         component: () => import("../components/Shop/Stock.vue"),
       },
       {
-<<<<<<< HEAD
         path:"/Index/Staff/WorkReport",
         component:()=> import("../components/Staff/WorkReport.vue"),
       },
       {
         path:"/Index/Staff/Check",
         component:()=> import("../components/Staff/Check.vue"),
-=======
-        path: "/Index/Staff",
-        component: () => import("../components/Staff/index.vue"),
->>>>>>> CY
       },
       {
         path: "/Index/Customer/member",
