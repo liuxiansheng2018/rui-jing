@@ -57,19 +57,7 @@ export default defineComponent({
             child:[
               {
                 childName:"当日订单",
-<<<<<<< HEAD
                 childUrl:"/Index/Main"
-=======
-                childUrl:""
-              },
-              {
-                childName:"客户数据",
-                childUrl:""
-              },
-              {
-                childName:"消息公告",
-                childUrl:""
->>>>>>> LZG
               },
               
             ],
