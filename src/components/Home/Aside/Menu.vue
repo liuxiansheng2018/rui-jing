@@ -3,7 +3,7 @@
     <el-row class="tac">
       <el-col :span="12">
         <el-menu
-          background-color="#545c64"
+          background-color="#333333"
           class="el-menu-vertical-demo"
           default-active="1"
           text-color="#fff"

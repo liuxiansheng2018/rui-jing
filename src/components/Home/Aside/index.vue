@@ -6,6 +6,7 @@
 
 <script>
 import Menu from "../../../components/Home/Aside/Menu.vue";
+
 export default {
   data() {
     return {};
