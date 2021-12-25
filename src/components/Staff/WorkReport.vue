@@ -43,20 +43,31 @@
     <el-row :gutter="20">
       <el-col :span="24"
         ><div class="grid-content bg-purple grid-height">
-          <el-table :data="tableData" style="width: 100%" size="medium ">
-            <el-table-column prop="date" label="部门" width="180" />
-            <el-table-column prop="name" label="问题描述" width="180" />
-            <el-table-column prop="name" label="问题分类" width="180" />
-            <el-table-column prop="name" label="所在城市" width="180" />
-            <el-table-column prop="name" label="解决问题" width="180" />
-            <el-table-column prop="name" label="跟进人" width="180" />
-            <el-table-column prop="address" label="是否解决" />
+          <el-table
+            :data="tableData"
+            style="width: 100%"
+            size="medium"
+            stripe="true"
+          >
+            <el-table-column prop="num" label="部门" width="180" />
+            <el-table-column prop="time" label="问题描述" width="180" />
+            <el-table-column prop="payment" label="问题分类" width="180" />
+            <el-table-column prop="money" label="所在城市" width="180" />
+            <el-table-column prop="discount" label="解决问题" width="180" />
+            <el-table-column prop="paid" label="跟进人" width="180" />
+            <el-table-column prop="put" label="是否解决" />
           </el-table>
           <el-pagination
-            background
             layout="prev, pager, next"
-            :total="1000"
+            :total="100"
             style="margin-top: 10px"
+            prev-text="上一页"
+            next-text="下一页"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :background="true"
+            v-model:currentPage="currentPage1"
+            :page-size="10"
           >
           </el-pagination></div
       ></el-col>
@@ -65,36 +76,63 @@
 </template>
 
 <script>
+import getTable from "../../mock/details/details.js";
+import { ref, onMounted } from "vue";
 export default {
   data() {
     return {
-      tableData: [
-        {
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-02",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-        {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles",
-        },
-      ],
+      // tableData: [
+      //   {
+      //     date: "2016-05-03",
+      //     name: "Tom",
+      //     address: "No. 189, Grove St, Los Angeles",
+      //   },
+      //   {
+      //     date: "2016-05-02",
+      //     name: "Tom",
+      //     address: "No. 189, Grove St, Los Angeles",
+      //   },
+      //   {
+      //     date: "2016-05-04",
+      //     name: "Tom",
+      //     address: "No. 189, Grove St, Los Angeles",
+      //   },
+      //   {
+      //     date: "2016-05-01",
+      //     name: "Tom",
+      //     address: "No. 189, Grove St, Los Angeles",
+      //   },
+      //   {
+      //     date: "2016-05-01",
+      //     name: "Tom",
+      //     address: "No. 189, Grove St, Los Angeles",
+      //   },
+      // ],
+    };
+  },
+  setup() {
+    const current = ref(1);
+    const pageSize = ref(8);
+    let tableData = ref([]);
+
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      tableData.value = getTable(pageSize.value, current.value);
+    };
+
+    onMounted(() => {
+      tableData.value = getTable(pageSize.value, current.value);
+    });
+    return {
+      current,
+      pageSize,
+      tableData,
+      handleSizeChange,
+      handleCurrentChange,
     };
   },
 };

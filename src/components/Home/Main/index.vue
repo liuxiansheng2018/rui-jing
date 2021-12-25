@@ -105,23 +105,32 @@
           <h4 class="grid-text">公司动态</h4>
           <ul class="buttom-1">
             <li v-for="(item, index) in 4" :key="index">
-              <div></div>
-              <p>新店新店新店新店新店新店新店新店新店新店新店</p>
-              <span></span>
+              <div><img src="@/assets/img/page/five.png" alt="" /></div>
+              <p>新店开张开业的六大要点开业计划不但包括开业仪式设计......</p>
+              <span>【12/9】</span>
             </li>
-          </ul></div
-      ></el-col>
+          </ul>
+        </div></el-col
+      >
       <el-col :span="9"
         ><div class="grid-content bg-purple">
           <h4 class="grid-text">公司公告</h4>
-          <p>国庆节放假安排和调整作息时间通知</p>
-          <hr />
-          <p>发布日期:2021-09-23 09:53</p>
-          <div>
+          <div class="gonggao-heater">
+            <span>
+              <p>国庆节放假安排和调整作息时间通知</p>
+              <hr />
+              <p>发布日期:2021-09-23 09:53</p>
+            </span>
+          </div>
+          <div class="gonggao-main">
             各有关单位:<br />
-            根据相关规定，国庆节放假时间和调整作息时间通知如下:
-            一、国庆节放假日期安排:10月1日（星期五）至10月7日（星期四）放假调休，共7天。9月26日（星期日）、10月9日（星期六）上班。
+            根据相关规定，国庆节放假时间和调整作息时间通知如下:<br />
+            一、国庆节放假日期安排:10月1日（星期五）至10月7日（星期四）放假调休，共7天。9月26日（星期日）、10月9日（星期六）上班。<br />
             二、调整作息时间:自2021年10月1日起至2022年4月30日，上午8时30分至12时，下午14时至17时。
+          </div>
+          <div class="gongao-footer">
+            <p>重庆市xxx股份有限公司</p>
+            <p>2021年9月23日</p>
           </div>
         </div></el-col
       >
@@ -319,9 +328,23 @@ export default {
   color: #ffb637;
 }
 .buttom-1 {
-  margin-top: 20px;
+  margin: 30px 20px 0 30px;
+  height: 100px;
   li {
-    margin: 10px;
+    margin: 20px 10px;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+  }
+  div {
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+  }
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 .buttom-3 {
@@ -339,8 +362,25 @@ export default {
       padding: 0 20px;
       p {
         margin: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
+}
+.gonggao-heater {
+  width: 100%;
+  padding: 0 135px;
+}
+.gonggao-main {
+  text-align: left;
+  padding: 0 20px;
+  font-weight: bold;
+}
+.gonggao-footer {
+  display: block;
+  height: 30px;
+  text-align: right;
 }
 </style>

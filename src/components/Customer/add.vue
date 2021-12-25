@@ -31,27 +31,33 @@
           <div class="customer-infor">
             <ul class="cus-infor">
               <li class="linforlist">
-                <div class="card" v-for="i in 4" :key="i">
-                  <div class="card-main">
-                    <div class="card-img">
-                      <img src="../../assets/img/customer/photo.png" alt="" />
-                      <p>姓名：小花</p>
-                    </div>
-                    <div class="card-infor">
-                      <p>性别；女</p>
-                      <p>电话：1321322324</p>
-                      <p>职务：大家思考</p>
-                    </div>
-                  </div>
-                  <div class="infor-detail">查看详情</div>
+                <div class="block">
+                  <el-carousel height="300px">
+                    <el-carousel-item v-for="item in 4" :key="item">
+                      <div class="inforlunbo" v-for="j in 2" :key="j">
+                        <div class="card" v-for="i in 2" :key="i">
+                          <div class="card-main">
+                            <div class="card-img">
+                              <img
+                                src="../../assets/img/customer/photo.png"
+                                alt=""
+                              />
+                              <p>姓名：小花</p>
+                            </div>
+                            <div class="card-infor">
+                              <p>性别；女</p>
+                              <p>电话：1321322324</p>
+                              <p>职务：大家思考</p>
+                            </div>
+                          </div>
+                          <div class="infor-detail">查看详情</div>
+                        </div>
+                      </div>
+                    </el-carousel-item>
+                  </el-carousel>
                 </div>
-                <!-- <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div> -->
               </li>
             </ul>
-            <img src="../../assets/img/customer/left-arrow.png" alt="" />
-            <img src="../../assets/img/customer/rigth-arrow.png" alt="" />
           </div>
         </div>
       </el-col>
@@ -60,18 +66,25 @@
           <p class="infor-text">客户反馈</p>
           <div class="evaluate-main">
             <ul class="evaluate">
-              <li class="evaluatelist" v-for="j in 3" :key="j">
+              <el-carousel height="225px" direction="vertical" :autoplay="true">
+                <el-carousel-item v-for="item in 3" :key="item">
+                  <div>
+                    <li class="evaluatelist" v-for="j in 3" :key="j">
+                      <span>
+                        <img src="../../assets/img/customer/photo.png" alt="" />
+                      </span>
+                      <span>味道很棒，很好吃，下次会带着朋友一起来 .....</span>
+                    </li>
+                  </div>
+                </el-carousel-item>
+              </el-carousel>
+              <!-- <li class="evaluatelist" v-for="j in 3" :key="j">
                 <span>
                   <img src="../../assets/img/customer/photo.png" alt="" />
                 </span>
                 <span>味道很棒，很好吃，下次会带着朋友一起来 .....</span>
-              </li>
+              </li> -->
             </ul>
-            <img
-              src="../../assets/img/customer/bottom-arrow.png"
-              alt=""
-              class="arr"
-            />
           </div>
         </div>
       </el-col>
@@ -165,19 +178,6 @@ export default {
     width: 850px;
     height: 300px;
     position: relative;
-    > img {
-      position: absolute;
-      top: 100px;
-      width: 20px;
-      height: 60px;
-      cursor: pointer;
-    }
-    img:nth-of-type(1) {
-      left: 30px;
-    }
-    img:nth-of-type(2) {
-      right: 40px;
-    }
   }
   .cus-infor {
     width: 800px;
@@ -193,13 +193,14 @@ export default {
       margin-left: 40px;
       .card {
         width: 40%;
-        height: 45%;
+        height: 100%;
         border: 1px solid #999999;
         border-radius: 5px;
-        padding-top: 15px;
+        padding: 15px 0;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-around;
         .card-main {
           width: 100%;
           height: 80%;
@@ -245,6 +246,7 @@ export default {
     width: 80%;
     display: flex;
     align-items: center;
+    margin-left: 50px;
     img {
       width: 40px;
       height: 55px;
@@ -252,7 +254,7 @@ export default {
     }
     span:nth-of-type(2) {
       display: inline-block;
-      width: 300px;
+      width: 350px;
       height: 40px;
       background: #81bcfe;
       border-radius: 5px;
@@ -263,14 +265,8 @@ export default {
 }
 .evaluate-main {
   position: relative;
+  width: 100%;
   height: 280px;
-  .arr {
-    width: 30px;
-    height: 10px;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-  }
 }
 .percentage-value {
   width: 80px;
@@ -279,5 +275,37 @@ export default {
   margin-left: 25px;
   margin-bottom: 10px;
   padding-bottom: 5px;
+}
+
+.el-carousel__item {
+  display: flex;
+  flex-direction: column;
+}
+.block {
+  width: 100%;
+}
+.inforlunbo {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+/deep/.el-carousel__arrow--left {
+  left: 0;
+  top: 150px;
+}
+/deep/.el-carousel__arrow--right {
+  right: 0;
+  top: 150px;
+}
+
+.evaluate {
+  /deep/.el-carousel__container {
+    width: 400px;
+    height: 225px;
+  }
+  .el-carousel__item {
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>
