@@ -17,7 +17,7 @@
                 </div>
               </template>
             </el-progress>
-            <div>较比上月</div>
+            <div class="compare">较比上月</div>
           </div>
         </div>
       </el-col>
@@ -33,7 +33,7 @@
               <li class="linforlist">
                 <div class="block">
                   <el-carousel height="300px">
-                    <el-carousel-item v-for="item in 4" :key="item">
+                    <el-carousel-item v-for="item in tableData" :key="item.id">
                       <div class="inforlunbo" v-for="j in 2" :key="j">
                         <div class="card" v-for="i in 2" :key="i">
                           <div class="card-main">
@@ -42,12 +42,12 @@
                                 src="../../assets/img/customer/photo.png"
                                 alt=""
                               />
-                              <p>姓名：小花</p>
+                              <p>姓名：{{ item.name }}</p>
                             </div>
                             <div class="card-infor">
-                              <p>性别；女</p>
-                              <p>电话：1321322324</p>
-                              <p>职务：大家思考</p>
+                              <p>性别；{{ item.sex }}</p>
+                              <p>电话：{{ item.regexp }}</p>
+                              <p>职务：{{ item.industry }}</p>
                             </div>
                           </div>
                           <div class="infor-detail">查看详情</div>
@@ -78,12 +78,6 @@
                   </div>
                 </el-carousel-item>
               </el-carousel>
-              <!-- <li class="evaluatelist" v-for="j in 3" :key="j">
-                <span>
-                  <img src="../../assets/img/customer/photo.png" alt="" />
-                </span>
-                <span>味道很棒，很好吃，下次会带着朋友一起来 .....</span>
-              </li> -->
             </ul>
           </div>
         </div>
@@ -93,15 +87,15 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
 import * as echarts from "echarts";
+import getTable from "../../mock/customer/add";
+import { ref, onMounted } from "vue";
 export default {
   setup() {
     onMounted(() => {
       var chartDom = document.getElementById("main");
       var myChart = echarts.init(chartDom);
       var option;
-
       option = {
         title: {
           text: "本月新增",
@@ -134,6 +128,13 @@ export default {
       };
       option && myChart.setOption(option);
     });
+
+    let tableData = ref([]);
+    onMounted(() => {
+      tableData.value = getTable();
+      console.log(tableData.value);
+    });
+    return { tableData };
   },
 };
 </script>
@@ -307,5 +308,9 @@ export default {
     justify-content: center;
     align-items: center;
   }
+}
+.compare {
+  font-size: 14px;
+  margin-top: 20px;
 }
 </style>
