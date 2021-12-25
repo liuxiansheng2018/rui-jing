@@ -38,11 +38,37 @@
           今日考勤
           <span>星期{{ week }}</span>
         </div>
+        <el-progress
+          type="circle"
+          :percentage="100"
+          status="success"
+          color="#0379FD"
+          :width="150"
+        >
+          <template #default>
+            <div class="kaoqin">
+              <p>4561</p>
+              <span>在位人数</span>
+            </div>
+          </template>
+        </el-progress>
       </div></el-col
     >
   </el-row>
   <el-row>
-    <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+    <el-col :span="24"
+      ><div class="grid-content bg-purple-dark">
+        <el-table :data="tableData" stripe style="width: 100%">
+          <el-table-column prop="date" label="姓名" />
+          <el-table-column prop="address" label="职务" />
+          <el-table-column prop="address" label="性质" />
+          <el-table-column prop="address" label="请假事由" width="180" />
+          <el-table-column prop="address" label="请假时间" width="280" />
+          <el-table-column prop="address" label="申请时间" width="180" />
+          <el-table-column prop="address" label="行政部" />
+          <el-table-column prop="address" label="审批" />
+        </el-table></div
+    ></el-col>
   </el-row>
 </template>
 
@@ -119,7 +145,29 @@ export default {
         url: groupimg,
       },
     ];
-    return { week, personal, group };
+    const tableData = [
+      {
+        date: "2016-05-03",
+        name: "Tom",
+        address: "No. 189, Grove St, Los Angeles",
+      },
+      {
+        date: "2016-05-02",
+        name: "Tom",
+        address: "No. 189, Grove St, Los Angeles",
+      },
+      {
+        date: "2016-05-04",
+        name: "Tom",
+        address: "No. 189, Grove St, Los Angeles",
+      },
+      {
+        date: "2016-05-01",
+        name: "Tom",
+        address: "No. 189, Grove St, Los Angeles",
+      },
+    ];
+    return { week, personal, group, tableData };
   },
 };
 </script>
@@ -179,24 +227,63 @@ export default {
       }
       .grade {
         display: inline-block;
-        padding: 3px;
+        padding: 3px 8px;
         color: #fff;
         border-radius: 5px;
       }
     }
     .group {
-      width: 100px;
+      width: 115px;
       .img {
-        width: 100px;
+        width: 115px;
+        height: 112px;
         img:nth-of-type(1) {
-          width: 100px;
-          height: 80px;
+          width: 115px;
+          height: 75px;
         }
       }
-      .grade {
-        width: 80px;
-      }
+      // .grade {
+      //   width: 80px;
+      // }
     }
   }
+  .kaoqin {
+    p {
+      font-size: 40px;
+      font-weight: bold;
+      color: #0379fd;
+      letter-spacing: 5px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      border-bottom: 1px solid #0379fd;
+      text-align: center;
+      margin: 10px 15px;
+    }
+    span {
+      font-size: 14px;
+      color: #333;
+    }
+  }
+}
+
+/deep/.el-table {
+  tr {
+    background-color: #ccc;
+    td {
+      text-align: center;
+    }
+  }
+  .has-gutter {
+    background-color: #81bcfe;
+    th {
+      text-align: center;
+      background-color: #81bcfe;
+      height: 100%;
+      color: #fff;
+    }
+  }
+}
+/deep/.el-table__row--striped {
+  background-color: #fff;
 }
 </style>
