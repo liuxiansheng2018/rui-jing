@@ -59,10 +59,16 @@
             </li>
           </ul>
           <el-pagination
-            background
             layout="prev, pager, next"
-            :total="1000"
-            style="margin-top: 20px"
+            :total="100"
+            style="margin-top: 10px"
+            prev-text="上一页"
+            next-text="下一页"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :background="true"
+            v-model:currentPage="currentPage1"
+            :page-size="10"
           >
           </el-pagination></div
       ></el-col>

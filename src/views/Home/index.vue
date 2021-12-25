@@ -43,6 +43,7 @@ export default {
   background-color: #cfe7ff;
   color: var(--el-text-color-primary);
   height: 100%;
+  min-width: 1300px;
   /* text-align: center; */
   /* line-height: 160px; */
 }
