@@ -102,7 +102,7 @@ export default {
   // },
   setup() {
     const current = ref(1);
-    const pageSize = ref(9);
+    const pageSize = ref(5);
     const tableData = ref([]);
     const list = [
       {
@@ -150,7 +150,7 @@ export default {
 <style lang="less" scoped>
 .grid-content {
   border-radius: 10px;
-  min-height: 160px;
+  min-height: 200px;
   background-color: #fff;
 }
 .search {
@@ -161,7 +161,7 @@ export default {
 }
 .shoptype {
   .grid-content {
-    min-height: 380px;
+    min-height: 300px;
     margin-top: 10px;
   }
 }
@@ -178,8 +178,8 @@ export default {
     width: 100%;
   }
   .purlogo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border: 3px solid rgb(250, 170, 51);
     border-radius: 50%;
     flex: 1;
@@ -187,8 +187,8 @@ export default {
     justify-content: center;
     align-items: center;
     img {
-      width: 40px;
-      height: 40px;
+      width: 50px;
+      height: 50px;
     }
   }
   .btn {
@@ -197,7 +197,7 @@ export default {
     margin-bottom: 10px;
     width: 100%;
     .this {
-      width: 60px;
+      width: 70px;
       height: 24px;
       border-radius: 12px;
       background-color: rgb(76, 137, 252);
@@ -206,7 +206,7 @@ export default {
       line-height: 24px;
     }
     .all {
-      width: 60px;
+      width: 70px;
       height: 24px;
       border-radius: 12px;
       background-color: rgb(197, 196, 196);

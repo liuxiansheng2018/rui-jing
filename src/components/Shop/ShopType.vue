@@ -41,7 +41,7 @@
         <div class="typeline">
           <div class="typetitle"><span>生鲜类</span></div>
           <div class="shopbox">
-            <div class="shop" v-for="item in rou" :key="item.id">
+            <div class="shop" v-for="item in shengxian" :key="item.id">
               <img src="../../assets/img/shop/shopshengxian.png" alt="" />
               <div class="content">
                 <div class="price">{{ item.price }}<br />/份</div>
@@ -53,10 +53,10 @@
         <div class="typeline">
           <div class="typetitle"><span>蔬菜类</span></div>
           <div class="shopbox">
-            <div class="shop" v-for="item in rou" :key="item.id">
+            <div class="shop" v-for="item in shucai" :key="item.id">
               <img src="../../assets/img/shop/shopshucai.png" alt="" />
               <div class="content">
-                <div class="price">{{ item.price }}<br />/瓶</div>
+                <div class="price">{{ item.price }}<br />/份</div>
                 <div class="name">{{ item.name }}</div>
               </div>
             </div>

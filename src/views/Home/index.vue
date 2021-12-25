@@ -30,6 +30,7 @@ export default {
   color: var(--el-text-color-primary);
   text-align: center;
   line-height: 60px;
+  min-width: 1500px;
 }
 
 .el-aside {
