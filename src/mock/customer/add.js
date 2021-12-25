@@ -5,11 +5,11 @@ const data = Mock.mock({
       // 主键
       "id|+1": 0,
       //姓名
-      name: "@name",
+      name: "@cname",
       //性别
       "sex|1": ["男", "女"],
       //电话
-      "phone|1-10": ["@phone"],
+      regexp: /^1[3456789]\d{9}$/,
       //职务
       "industry|1 ": ["职业经理", "机械制造业", "网络工程"],
 

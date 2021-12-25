@@ -47,10 +47,10 @@
           <div class="history">
             <p>历史记录</p>
             <ul>
-              <li v-for="i in 4" :key="i">
+              <li v-for="(i, index) in tableData" :key="index">
                 <img src="../../assets/img/setting/fire.png" alt="" />
-                <span>https://www.zcool.com.cn/search/content?wordF</span>
-                <span>[2110-2-11]</span>
+                <span>{{ tableData[index].url }}</span>
+                <span>[{{ tableData[index].date }}]</span>
               </li>
             </ul>
           </div>
@@ -61,9 +61,16 @@
 </template>
 
 <script>
+import getTable from "../../mock/customer/set";
+import { ref, onMounted } from "vue";
 export default {
-  data() {
-    return {};
+  setup() {
+    let tableData = ref([]);
+    onMounted(() => {
+      tableData.value = getTable();
+      console.log(tableData.value);
+    });
+    return { tableData };
   },
 };
 </script>
@@ -158,7 +165,7 @@ export default {
         width: 60%;
         height: 15%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         img {
           width: 20px;
           height: 20px;

@@ -5,9 +5,9 @@ const data = Mock.mock({
       // 主键
       "id|+1": 0,
       //姓名
-      name: "@name",
+      name: "@cname",
       //职务
-      "industry|1 ": ["职业经理", "机械制造业", "网络工程"],
+      "industry|1": ["职业经理", "机械制造业", "网络工程"],
       //会员号
       "num|+1": 20163365,
       //注册时间
@@ -15,7 +15,7 @@ const data = Mock.mock({
       //注册方式
       "register|1": ["线上注册", "线下注册"],
       //电话
-      "phone|1-10": ["@phone"],
+      regexp: /^1[3456789]\d{9}$/,
       //住址
       address: "@city(true)",
       //注册进度
