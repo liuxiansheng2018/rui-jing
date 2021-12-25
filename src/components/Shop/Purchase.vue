@@ -56,7 +56,7 @@
               <div class="header2">订单金额</div>
             </template>
           </el-table-column>
-          <el-table-column prop="phone">
+          <el-table-column prop="regexp">
             <template #header>
               <div class="header2">商家电话</div>
             </template>

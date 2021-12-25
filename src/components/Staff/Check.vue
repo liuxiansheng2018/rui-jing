@@ -59,15 +59,28 @@
     <el-col :span="24"
       ><div class="grid-content bg-purple-dark">
         <el-table :data="tableData" stripe style="width: 100%">
-          <el-table-column prop="date" label="姓名" />
-          <el-table-column prop="address" label="职务" />
-          <el-table-column prop="address" label="性质" />
-          <el-table-column prop="address" label="请假事由" width="180" />
-          <el-table-column prop="address" label="请假时间" width="280" />
-          <el-table-column prop="address" label="申请时间" width="180" />
-          <el-table-column prop="address" label="行政部" />
-          <el-table-column prop="address" label="审批" />
-        </el-table></div
+          <el-table-column prop="name" label="姓名" />
+          <el-table-column prop="work" label="职务" />
+          <el-table-column prop="leave" label="性质" />
+          <el-table-column prop="reason" label="请假事由" width="180" />
+          <el-table-column prop="datetime" label="请假时间" width="280" />
+          <el-table-column prop="time" label="申请时间" width="180" />
+          <el-table-column prop="ratify1" label="行政部" />
+          <el-table-column prop="ratify2" label="审批" />
+        </el-table>
+        <el-pagination
+          :background="true"
+          v-model:currentPage="currentPage1"
+          :page-size="10"
+          layout="total, prev, pager, next"
+          :total="100"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          prev-text="上一页"
+          next-text="下一页"
+          style="margin-top: 20px"
+        >
+        </el-pagination></div
     ></el-col>
   </el-row>
 </template>
@@ -78,9 +91,25 @@ import two from "../../assets/img/customer/two.png";
 import three from "../../assets/img/customer/three.png";
 import personalimg from "../../assets/img/check/personalimg.png";
 import groupimg from "../../assets/img/check/groupimg.png";
+import getTable from "../../mock/staff/check.js";
+import { ref, onMounted } from "vue";
 
 export default {
   setup() {
+    const current = ref(1);
+    const pageSize = ref(9);
+    const tableData = ref([]);
+    onMounted(() => {
+      tableData.value = getTable(pageSize.value, current.value);
+    });
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      tableData.value = getTable(pageSize.value, current.value);
+    };
     const week = (() => {
       switch (new Date().getDay()) {
         case 0:
@@ -145,29 +174,15 @@ export default {
         url: groupimg,
       },
     ];
-    const tableData = [
-      {
-        date: "2016-05-03",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-      {
-        date: "2016-05-02",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-      {
-        date: "2016-05-04",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-      {
-        date: "2016-05-01",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-    ];
-    return { week, personal, group, tableData };
+
+    return {
+      week,
+      personal,
+      group,
+      tableData,
+      handleSizeChange,
+      handleCurrentChange,
+    };
   },
 };
 </script>
