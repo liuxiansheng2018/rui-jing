@@ -13,14 +13,7 @@
               <span class="leaveTime">
                 <label for="">请假时间:</label>
                 <div class="block">
-                  <el-date-picker
-                    v-model="value1"
-                    type="datetimerange"
-                    range-separator="To"
-                    start-placeholder="Start date"
-                    end-placeholder="End date"
-                  >
-                  </el-date-picker>
+                  <SetData></SetData>
                 </div>
               </span>
             </div>
@@ -39,7 +32,7 @@
         ><div class="grid-content bg-purple grid-height">
           <h4>请假记录</h4>
           <div class="record">
-            <table border="1">
+            <!-- <table border="1">
               <tr>
                 <td>姓名</td>
                 <td>请假事由</td>
@@ -56,7 +49,20 @@
                 <td>代销毁</td>
                 <td>2021.12.08</td>
               </tr>
-            </table>
+            </table> -->
+            <el-table
+              :data="tableData"
+              style="width: 100%"
+              size="medium"
+              stripe="true"
+            >
+              <el-table-column prop="name" label="姓名" width="180" />
+              <el-table-column prop="leave" label="请假事由" width="180" />
+              <el-table-column prop="datetime" label="请假时间" width="180" />
+              <el-table-column prop="ratify" label="审批" width="180" />
+              <el-table-column prop="remove" label="销假" width="100" />
+              <el-table-column prop="time" label="申请时间" width="180" />
+            </el-table>
             <el-pagination background layout="prev, pager, next" :total="100">
             </el-pagination>
           </div></div
@@ -66,46 +72,42 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs } from "vue";
-export default defineComponent({
-  setup() {
-    const state = reactive({
-      shortcuts: [
-        {
-          text: "Last week",
-          value: () => {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
-            return [start, end];
-          },
-        },
-        {
-          text: "Last month",
-          value: () => {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-            return [start, end];
-          },
-        },
-        {
-          text: "Last 3 months",
-          value: () => {
-            const end = new Date();
-            const start = new Date();
-            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-            return [start, end];
-          },
-        },
-      ],
-      value1: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
-      value2: "",
-    });
-
-    return toRefs(state);
+import SetData from "./setdata.vue";
+import getTable from "../../mock/personal/leave";
+import { ref, onMounted } from "vue";
+export default {
+  data() {
+    return {};
   },
-});
+  components: {
+    SetData,
+  },
+  setup() {
+    const current = ref(1);
+    const pageSize = ref(4);
+    let tableData = ref([]);
+
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      tableData.value = getTable(pageSize.value, current.value);
+    };
+
+    onMounted(() => {
+      tableData.value = getTable(pageSize.value, current.value);
+    });
+    return {
+      current,
+      pageSize,
+      tableData,
+      handleSizeChange,
+      handleCurrentChange,
+    };
+  },
+};
 </script>
 
 <style lang="less" scoped>
