@@ -57,9 +57,10 @@
                 <td>2021.12.08</td>
               </tr>
             </table>
-          </div>
-        </div></el-col
-      >
+            <el-pagination background layout="prev, pager, next" :total="100">
+            </el-pagination>
+          </div></div
+      ></el-col>
     </el-row>
   </div>
 </template>
@@ -173,11 +174,14 @@ form {
 }
 .record {
   width: 100%;
-  height: 100%;
+  height: 250px;
   padding: 20px 100px 0;
   // margin-top: 30px;
   td {
     padding: 15px 60px;
   }
+}
+.el-pagination {
+  margin-top: 5px;
 }
 </style>

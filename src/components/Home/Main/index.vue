@@ -129,8 +129,8 @@
             二、调整作息时间:自2021年10月1日起至2022年4月30日，上午8时30分至12时，下午14时至17时。
           </div>
           <div class="gongao-footer">
-            <span>重庆市xxx股份有限公司 </span>
-            <span>2021年9月23日</span>
+            <p>重庆市xxx股份有限公司</p>
+            <p>2021年9月23日</p>
           </div>
         </div></el-col
       >
@@ -377,5 +377,10 @@ export default {
   text-align: left;
   padding: 0 20px;
   font-weight: bold;
+}
+.gonggao-footer {
+  display: block;
+  height: 30px;
+  text-align: right;
 }
 </style>
