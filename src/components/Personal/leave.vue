@@ -60,7 +60,7 @@
               <el-table-column prop="leave" label="请假事由" width="180" />
               <el-table-column prop="datetime" label="请假时间" width="180" />
               <el-table-column prop="ratify" label="审批" width="180" />
-              <el-table-column prop="remove" label="销假" width="180" />
+              <el-table-column prop="remove" label="销假" width="100" />
               <el-table-column prop="time" label="申请时间" width="180" />
             </el-table>
             <el-pagination background layout="prev, pager, next" :total="100">
