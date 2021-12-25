@@ -81,22 +81,28 @@
         <div class="grid-content bg-purple">
           <div class="table">
             <el-table :data="tableData" style="width: 100%">
-              <el-table-column prop="rank" label="等级" width="180" />
-              <el-table-column prop="name" label="姓名" width="180" />
-              <el-table-column prop="profession" label="行业" />
-              <el-table-column prop="vipnum" label="会员号" />
-              <el-table-column prop="date" label="注册时间" />
-              <el-table-column prop="money" label="账户余额" />
-              <el-table-column prop="tel" label="电话" />
-              <el-table-column prop="address" label="住址" />
+              <el-table-column prop="grade" label="等级" :md="3" />
+              <el-table-column prop="name" label="姓名" :md="3" />
+              <el-table-column prop="industry" label="行业" :md="3" />
+              <el-table-column prop="num" label="会员号" :md="3" />
+              <el-table-column prop="date" label="注册时间" :md="3" />
+              <el-table-column prop="residue" label="账户余额" :md="3" />
+              <el-table-column prop="regexp" label="电话" :md="3" />
+              <el-table-column prop="address" label="住址" :md="3" />
             </el-table>
           </div>
-          <div class="table-page">
-            <el-pagination
-              layout="prev, pager, next"
-              :total="80"
-            ></el-pagination>
-          </div>
+          <el-pagination
+            background
+            :total="80"
+            v-model:currentPage="currentPage1"
+            layout="prev, pager, next"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            prev-text="上一页"
+            next-text="下一页"
+            style="margin-top: 20px"
+          >
+          </el-pagination>
         </div>
       </el-col>
     </el-row>
@@ -110,6 +116,9 @@ import img3 from "../../assets/img/customer/one.png";
 import oneimg1 from "../../assets/img/customer/one-img.png";
 import twoimg2 from "../../assets/img/customer/two-img.png";
 import threeimg3 from "../../assets/img/customer/three-img.png";
+import getTable from "../../mock/customer/member";
+import { ref, onMounted } from "vue";
+
 export default {
   setup() {
     const list = [
@@ -135,42 +144,29 @@ export default {
         color: "#FFAF22",
       },
     ];
-    return { list };
-  },
-  data() {
+    const current = ref(1);
+    const pageSize = ref(3);
+    let tableData = ref([]);
+
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      tableData.value = getTable(pageSize.value, current.value);
+    };
+
+    onMounted(() => {
+      tableData.value = getTable(pageSize.value, current.value);
+    });
     return {
-      tableData: [
-        {
-          rank: "黄金",
-          date: "2016-05-03",
-          name: "张三",
-          address: "No. 189, Grove St, Los Angeles",
-          profession: "职业经理",
-          vipnum: 123456,
-          money: 11222,
-          tel: 13322445566,
-        },
-        {
-          rank: "白银",
-          date: "2016-05-02",
-          name: "李四",
-          address: "No. 189, Grove St, Los Angeles",
-          profession: "职业经理",
-          vipnum: 123456,
-          money: 13432,
-          tel: 13322445566,
-        },
-        {
-          rank: "青铜",
-          date: "2016-05-04",
-          name: "王五",
-          address: "No. 189, Grove St, Los Angeles",
-          profession: "职业经理",
-          vipnum: 123456,
-          money: 1128,
-          tel: 13322445566,
-        },
-      ],
+      list,
+      current,
+      pageSize,
+      tableData,
+      handleSizeChange,
+      handleCurrentChange,
     };
   },
 };
