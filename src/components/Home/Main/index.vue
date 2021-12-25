@@ -47,7 +47,7 @@
           </div>
           <div class="top-3-main">
             <div class="top-3-img">
-              <img src="../../../assets/img/首页/蓝色.png" alt="" />
+              <img src="../../../assets/img/page/blue.png" alt="" />
               <p>18</p>
             </div>
             <p>十一月十五</p>

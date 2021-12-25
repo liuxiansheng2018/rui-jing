@@ -17,52 +17,112 @@
         <div class="typeline">
           <div class="typetitle"><span>酒水类</span></div>
           <div class="shopbox">
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
+            <div class="shop" v-for="item in jiushui" :key="item.id">
+              <img src="../../assets/img/shop/shopjiushui.png" alt="" />
               <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
+                <div class="price">{{ item.price }}<br />/瓶</div>
+                <div class="name">{{ item.name }}</div>
               </div>
             </div>
           </div>
         </div>
-      </div></el-col
-    >
+        <div class="typeline">
+          <div class="typetitle"><span>肉类</span></div>
+          <div class="shopbox">
+            <div class="shop" v-for="item in rou" :key="item.id">
+              <img src="../../assets/img/shop/shoprou.png" alt="" />
+              <div class="content">
+                <div class="price">{{ item.price }}<br />/份</div>
+                <div class="name">{{ item.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="typeline">
+          <div class="typetitle"><span>生鲜类</span></div>
+          <div class="shopbox">
+            <div class="shop" v-for="item in rou" :key="item.id">
+              <img src="../../assets/img/shop/shopshengxian.png" alt="" />
+              <div class="content">
+                <div class="price">{{ item.price }}<br />/份</div>
+                <div class="name">{{ item.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="typeline">
+          <div class="typetitle"><span>蔬菜类</span></div>
+          <div class="shopbox">
+            <div class="shop" v-for="item in rou" :key="item.id">
+              <img src="../../assets/img/shop/shopshucai.png" alt="" />
+              <div class="content">
+                <div class="price">{{ item.price }}<br />/瓶</div>
+                <div class="name">{{ item.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination">
+          <el-pagination
+            :background="true"
+            v-model:currentPage="currentPage1"
+            :page-size="10"
+            layout="total, prev, pager, next"
+            :total="100"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            prev-text="上一页"
+            next-text="下一页"
+            style="margin-top: 20px"
+          >
+          </el-pagination>
+        </div></div
+    ></el-col>
   </el-row>
 </template>
 
 <script>
+import {
+  getjiushui,
+  getrou,
+  getshengxian,
+  getshucai,
+} from "../../mock/shop/shoptype";
+import { onMounted, ref } from "vue";
 export default {
-  data() {
-    return {};
+  setup() {
+    const current = ref(1);
+    const pageSize = ref(5);
+    const jiushui = ref([]);
+    const rou = ref([]);
+    const shengxian = ref([]);
+    const shucai = ref([]);
+
+    onMounted(() => {
+      jiushui.value = getjiushui(pageSize.value, current.value);
+      rou.value = getrou(pageSize.value, current.value);
+      shengxian.value = getshengxian(pageSize.value, current.value);
+      shucai.value = getshucai(pageSize.value, current.value);
+    });
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      jiushui.value = getjiushui(pageSize.value, current.value);
+      rou.value = getrou(pageSize.value, current.value);
+      shengxian.value = getshengxian(pageSize.value, current.value);
+      shucai.value = getshucai(pageSize.value, current.value);
+    };
+    return {
+      jiushui,
+      rou,
+      shengxian,
+      shucai,
+      handleSizeChange,
+      handleCurrentChange,
+    };
   },
 };
 </script>
@@ -193,5 +253,9 @@ export default {
       }
     }
   }
+}
+.pagination {
+  width: 100%;
+  text-align: center;
 }
 </style>

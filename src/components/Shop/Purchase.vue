@@ -31,49 +31,61 @@
     <el-col :span="24"
       ><div class="grid-content bg-purple-dark">
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="date">
+          <el-table-column prop="type">
             <template #header>
               <div class="header1">商品种类</div>
             </template>
           </el-table-column>
-          <el-table-column prop="name">
+          <el-table-column prop="num">
             <template #header>
               <div class="header2">订单号</div>
             </template>
           </el-table-column>
-          <el-table-column prop="address">
+          <el-table-column prop="time">
             <template #header>
               <div class="header2">交易时间</div>
             </template>
           </el-table-column>
-          <el-table-column prop="address">
+          <el-table-column prop="way">
             <template #header>
               <div class="header2">采购方式</div>
             </template>
           </el-table-column>
-          <el-table-column prop="address">
+          <el-table-column prop="paid">
             <template #header>
               <div class="header2">订单金额</div>
             </template>
           </el-table-column>
-          <el-table-column prop="address">
+          <el-table-column prop="phone">
             <template #header>
               <div class="header2">商家电话</div>
             </template>
           </el-table-column>
-          <el-table-column prop="address">
+          <el-table-column prop="form">
             <template #header>
               <div class="header2">订单回执</div>
             </template>
           </el-table-column>
-          <el-table-column prop="address">
+          <el-table-column prop="money">
             <template #header>
               <div class="header2">已付款</div>
             </template>
           </el-table-column>
         </el-table>
-      </div></el-col
-    >
+        <el-pagination
+          :background="true"
+          v-model:currentPage="currentPage1"
+          :page-size="10"
+          layout="total, prev, pager, next"
+          :total="100"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          prev-text="上一页"
+          next-text="下一页"
+          style="margin-top: 20px"
+        >
+        </el-pagination></div
+    ></el-col>
   </el-row>
 </template>
 
@@ -82,11 +94,16 @@ import purchase1 from "../../assets/img/shop/purchase1.png";
 import purchase2 from "../../assets/img/shop/purchase2.png";
 import purchase3 from "../../assets/img/shop/purchase3.png";
 import purchase4 from "../../assets/img/shop/purchase4.png";
+import getTable from "../../mock/shop/purchase";
+import { onMounted, ref } from "vue";
 export default {
   // data() {
   //   return {};
   // },
   setup() {
+    const current = ref(1);
+    const pageSize = ref(9);
+    const tableData = ref([]);
     const list = [
       {
         id: 1,
@@ -113,7 +130,19 @@ export default {
         color: "#765EFE",
       },
     ];
-    return { list };
+
+    onMounted(() => {
+      tableData.value = getTable(pageSize.value, current.value);
+    });
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      tableData.value = getTable(pageSize.value, current.value);
+    };
+    return { list, tableData, handleSizeChange, handleCurrentChange };
   },
 };
 </script>

@@ -21,79 +21,88 @@
   <el-row class="shoptype">
     <el-col :span="24"
       ><div class="grid-content bg-purple-dark">
-        <el-table :data="tableData" style="width: 100%">
-          <el-table-column prop="date">
-            <template #header>
-              <div class="header1">商品种类</div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="name">
-            <template #header>
-              <div class="header2">订单号</div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="address">
-            <template #header>
-              <div class="header2">入库时间</div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="address">
-            <template #header>
-              <div class="header2">采购方式</div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="address">
-            <template #header>
-              <div class="header2">订单金额</div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="address">
-            <template #header>
-              <div class="header2">现有数量</div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="address">
-            <template #header>
-              <div class="header2">存储方式</div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="address">
-            <template #header>
-              <div class="header2">已付款</div>
-            </template>
-          </el-table-column>
-        </el-table>
-      </div></el-col
-    >
+        <div class="table">
+          <el-table :data="tableData" style="width: 100%">
+            <el-table-column prop="shop" :md="3">
+              <template #header>
+                <div class="header1">商品种类</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="num" :md="3">
+              <template #header>
+                <div class="header2">订单号</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="time" :md="3">
+              <template #header>
+                <div class="header2">入库时间</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="pay" :md="3">
+              <template #header>
+                <div class="header2">采购方式</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="money" :md="3">
+              <template #header>
+                <div class="header2">订单金额</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="count" :md="3">
+              <template #header>
+                <div class="header2">现有数量</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="way" :md="3">
+              <template #header>
+                <div class="header2">存储方式</div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="money" :md="3">
+              <template #header>
+                <div class="header2">已付款</div>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+        <el-pagination
+          :background="true"
+          v-model:currentPage="currentPage1"
+          :page-size="10"
+          layout="total, prev, pager, next"
+          :total="100"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          prev-text="上一页"
+          next-text="下一页"
+          style="margin-top: 20px"
+        >
+        </el-pagination></div
+    ></el-col>
   </el-row>
 </template>
 
 <script>
+import getTable from "../../mock/shop/stock";
+import { onMounted, ref } from "vue";
 export default {
   setup() {
-    const tableData = [
-      {
-        date: "2016-05-03",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-      {
-        date: "2016-05-02",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-      {
-        date: "2016-05-04",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-      {
-        date: "2016-05-01",
-        name: "Tom",
-        address: "No. 189, Grove St, Los Angeles",
-      },
-    ];
-    return { tableData };
+    const current = ref(1);
+    const pageSize = ref(9);
+    const tableData = ref([]);
+    onMounted(() => {
+      tableData.value = getTable(pageSize.value, current.value);
+    });
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      tableData.value = getTable(pageSize.value, current.value);
+    };
+
+    return { tableData, handleSizeChange, handleCurrentChange };
   },
 };
 </script>
@@ -207,5 +216,8 @@ export default {
   background-color: #d5d5d5;
   text-align: center;
   color: #555;
+}
+.table {
+  margin-bottom: 10px;
 }
 </style>

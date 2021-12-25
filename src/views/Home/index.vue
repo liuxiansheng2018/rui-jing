@@ -26,14 +26,14 @@ export default {
 
 <style>
 .el-header {
-  background-color: #b3c0d1;
+  background-color: #333;
   color: var(--el-text-color-primary);
   text-align: center;
   line-height: 60px;
 }
 
 .el-aside {
-  background-color: #d3dce6;
+  background-color: #333;
   color: var(--el-text-color-primary);
   text-align: center;
   line-height: 200px;
@@ -41,7 +41,7 @@ export default {
 }
 
 .el-main {
-  background-color: #e9eef3;
+  background-color: #cfe7ff;
   color: var(--el-text-color-primary);
   height: 100%;
   /* text-align: center; */
