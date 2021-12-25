@@ -73,12 +73,12 @@ const routes = [
         component: () => import("../components/Shop/Stock.vue"),
       },
       {
-        path:"/Index/Staff/WorkReport",
-        component:()=> import("../components/Staff/WorkReport.vue"),
+        path: "/Index/Staff/WorkReport",
+        component: () => import("../components/Staff/WorkReport.vue"),
       },
       {
-        path:"/Index/Staff/Check",
-        component:()=> import("../components/Staff/Check.vue"),
+        path: "/Index/Staff/Check",
+        component: () => import("../components/Staff/Check.vue"),
       },
       {
         path: "/Index/Customer/member",

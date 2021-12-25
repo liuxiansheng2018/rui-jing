@@ -17,52 +17,112 @@
         <div class="typeline">
           <div class="typetitle"><span>酒水类</span></div>
           <div class="shopbox">
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
+            <div class="shop" v-for="item in jiushui" :key="item.id">
+              <img src="../../assets/img/shop/shopjiushui.png" alt="" />
               <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
-              </div>
-            </div>
-            <div class="shop">
-              <img src="../../assets/img/shop/shop1.png" alt="" />
-              <div class="content">
-                <div class="price">8.00<br />/瓶</div>
-                <div class="name">啤酒</div>
+                <div class="price">{{ item.price }}<br />/瓶</div>
+                <div class="name">{{ item.name }}</div>
               </div>
             </div>
           </div>
         </div>
-      </div></el-col
-    >
+        <div class="typeline">
+          <div class="typetitle"><span>肉类</span></div>
+          <div class="shopbox">
+            <div class="shop" v-for="item in rou" :key="item.id">
+              <img src="../../assets/img/shop/shoprou.png" alt="" />
+              <div class="content">
+                <div class="price">{{ item.price }}<br />/份</div>
+                <div class="name">{{ item.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="typeline">
+          <div class="typetitle"><span>生鲜类</span></div>
+          <div class="shopbox">
+            <div class="shop" v-for="item in rou" :key="item.id">
+              <img src="../../assets/img/shop/shopshengxian.png" alt="" />
+              <div class="content">
+                <div class="price">{{ item.price }}<br />/份</div>
+                <div class="name">{{ item.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="typeline">
+          <div class="typetitle"><span>蔬菜类</span></div>
+          <div class="shopbox">
+            <div class="shop" v-for="item in rou" :key="item.id">
+              <img src="../../assets/img/shop/shopshucai.png" alt="" />
+              <div class="content">
+                <div class="price">{{ item.price }}<br />/瓶</div>
+                <div class="name">{{ item.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination">
+          <el-pagination
+            :background="true"
+            v-model:currentPage="currentPage1"
+            :page-size="10"
+            layout="total, prev, pager, next"
+            :total="100"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            prev-text="上一页"
+            next-text="下一页"
+            style="margin-top: 20px"
+          >
+          </el-pagination>
+        </div></div
+    ></el-col>
   </el-row>
 </template>
 
 <script>
+import {
+  getjiushui,
+  getrou,
+  getshengxian,
+  getshucai,
+} from "../../mock/shop/shoptype";
+import { onMounted, ref } from "vue";
 export default {
-  data() {
-    return {};
+  setup() {
+    const current = ref(1);
+    const pageSize = ref(5);
+    const jiushui = ref([]);
+    const rou = ref([]);
+    const shengxian = ref([]);
+    const shucai = ref([]);
+
+    onMounted(() => {
+      jiushui.value = getjiushui(pageSize.value, current.value);
+      rou.value = getrou(pageSize.value, current.value);
+      shengxian.value = getshengxian(pageSize.value, current.value);
+      shucai.value = getshucai(pageSize.value, current.value);
+    });
+    const handleSizeChange = (val) => {
+      console.log(`${val} items per page`);
+    };
+    const handleCurrentChange = (val) => {
+      // console.log(`current page: ${val}`);
+      current.value = val;
+      jiushui.value = getjiushui(pageSize.value, current.value);
+      rou.value = getrou(pageSize.value, current.value);
+      shengxian.value = getshengxian(pageSize.value, current.value);
+      shucai.value = getshucai(pageSize.value, current.value);
+    };
+    return {
+      jiushui,
+      rou,
+      shengxian,
+      shucai,
+      handleSizeChange,
+      handleCurrentChange,
+    };
   },
 };
 </script>
@@ -70,7 +130,7 @@ export default {
 <style lang="less" scoped>
 .grid-content {
   border-radius: 10px;
-  min-height: 80px;
+  min-height: 100px;
   text-align: left;
   padding: 10px;
   color: #333;
@@ -87,39 +147,43 @@ export default {
     font-weight: bold;
   }
   .searchbox {
-    width: 300px;
-    height: 30px;
+    width: 400px;
+    height: 40px;
     border: 2px solid rgb(52, 145, 252);
-    border-radius: 15px;
+    border-radius: 20px;
     position: absolute;
     top: 50%;
     left: 100px;
     transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     img {
       width: 15px;
       height: 15px;
-      margin: 5px 5px;
+      margin-left: 5px;
     }
     input {
-      height: 26px;
+      height: 36px;
       outline: none;
-      position: absolute;
-      top: 0;
-      width: 213px;
-      margin-left: 5px;
+      // position: absolute;
+      // top: 0;
+      // width: 213px;
+      flex: 1;
+      margin-left: 10px;
       border: none;
     }
     input::placeholder {
       color: #999;
     }
     .searchbtn {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 26px;
+      // position: absolute;
+      // right: 0;
+      // top: 0;
+      height: 36px;
       width: 60px;
       border-left: 2px solid rgb(52, 145, 252);
-      line-height: 26px;
+      line-height: 36px;
       text-align: center;
       color: #999;
       cursor: pointer;
@@ -130,7 +194,7 @@ export default {
 .shoptype {
   .grid-content {
     margin-top: 20px;
-    min-height: 420px;
+    min-height: 520px;
   }
   .typeline {
     height: 120px;
@@ -189,5 +253,9 @@ export default {
       }
     }
   }
+}
+.pagination {
+  width: 100%;
+  text-align: center;
 }
 </style>
