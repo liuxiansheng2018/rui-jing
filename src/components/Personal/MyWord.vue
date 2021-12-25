@@ -58,9 +58,14 @@
               <span>查看详情</span>
             </li>
           </ul>
-          <p>分页</p>
-        </div></el-col
-      >
+          <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="1000"
+            style="margin-top: 20px"
+          >
+          </el-pagination></div
+      ></el-col>
       <el-col :span="6"
         ><div class="grid-content bg-purple grid-height2">
           <h3 class="bt">临时工作</h3>
