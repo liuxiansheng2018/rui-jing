@@ -36,7 +36,6 @@ export default {
   background-color: #333;
   color: var(--el-text-color-primary);
   text-align: center;
-  line-height: 200px;
   overflow-x: hidden;
 }
 
@@ -55,13 +54,4 @@ export default {
   height: 100%;
   min-height: 660px;
 }
-
-/* .el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
-} */
 </style>

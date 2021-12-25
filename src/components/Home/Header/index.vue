@@ -2,12 +2,10 @@
   <div class="header">
     <h1>金锐管理系统</h1>
     <div class="right">
-      <img src="../../../assets/img/page/more.png" alt="" />
-      <img src="../../../assets/img/page/set.png" alt="" />
-      <div class="touxiang">
-        <img src="../../../assets/img/setting/touxiang.png" alt="" />
-        <img src="../../../assets/img/page/arrow.png" alt="" />
-      </div>
+      <img class="img1" src="../../../assets/img/page/more.png" alt="" />
+      <img class="img2" src="../../../assets/img/page/set.png" alt="" />
+      <img class="img3" src="../../../assets/img/page/smalltx.png" alt="" />
+      <img class="img4" src="../../../assets/img/page/arrow.png" alt="" />
     </div>
   </div>
 </template>
@@ -24,29 +22,37 @@ export default {
 h1 {
   color: white;
   font-size: 20px;
+  font-family: Microsoft YaHei;
+  cursor: pointer;
 }
 .header {
   display: flex;
   justify-content: space-between;
   .right {
+    width: 300px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    img {
-      width: 30px;
-      height: 30px;
-      margin-right: 42px;
-      align-items: center;
+    .img1 {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
     }
-    .touxiang {
-      img {
-        width: 50px;
-        height: 50px;
-      }
-      img:nth-of-type(2) {
-        width: 8px;
-        height: 8px;
-      }
+    .img2 {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+    .img3 {
+      width: 80px;
+      height: 50px;
+      cursor: pointer;
+    }
+    .img4 {
+      width: 15px;
+      height: 8px;
+      margin-top: 25px;
+      cursor: pointer;
     }
   }
 }
