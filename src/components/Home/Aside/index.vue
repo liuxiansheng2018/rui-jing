@@ -1,7 +1,7 @@
 <template>
   <div>
     <img class="img" src="../../../assets/img/page/touxiang.png" alt="" />
-    <p style="font-size: 18px">诸葛承淮</p>
+    <p style="font-size: 18px">张总</p>
     <p>店长</p>
   </div>
   <div class="Aside">
